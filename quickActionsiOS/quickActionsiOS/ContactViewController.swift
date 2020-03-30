@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ContactViewController.swift
 //  quickActionsiOS
 //
 //  Created by Fabrício Guilhermo on 30/03/20.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ContactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
 }
-
