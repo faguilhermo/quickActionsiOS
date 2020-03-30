@@ -10,20 +10,25 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    // enum para  organizar quick actions e facilitar  acesso
     enum ShortcutType: String {
-        case addContact = "AddContact"
+        case addContact = "AddContact" // nota-se que a string deve estar identica ao nosso Itemtype
     }
 
+    // objeto pré existente, responsável pelos eventos da nossa view
     var window: UIWindow?
 
+    // pede para o delegate executar a ação selecionada
     func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-
+        // garante que exista a ação
         if let type = ShortcutType(rawValue: shortcutItem.type) {
             switch type {
+            // caso seja a de adicionar contatos
             case .addContact:
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let targetVC = storyboard.instantiateViewController(withIdentifier: "add") as! AddContactViewController
                 if let navC = window?.rootViewController as! UINavigationController? {
+                    // abre o app direto na view desejada
                     navC.pushViewController(targetVC, animated: false)
                 } 
             }
