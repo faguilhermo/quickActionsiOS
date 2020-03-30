@@ -10,8 +10,26 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    enum ShortcutType: String {
+        case addContact = "AddContact"
+    }
+
     var window: UIWindow?
 
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+
+        if let type = ShortcutType(rawValue: shortcutItem.type) {
+            switch type {
+            case .addContact:
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let targetVC = storyboard.instantiateViewController(withIdentifier: "add") as! AddContactViewController
+                if let navC = window?.rootViewController as! UINavigationController? {
+                    navC.pushViewController(targetVC, animated: false)
+                } 
+            }
+        }
+
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
